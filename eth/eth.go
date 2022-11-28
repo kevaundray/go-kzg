@@ -76,6 +76,10 @@ var (
 )
 
 func init() {
+	// Hack bcause it does not seem to be getting initialised before this init is called
+	BLSModulus = new(big.Int)
+	BLSModulus.SetString(bls.ModulusStr, 10)
+
 	// initialize the 64 bytes of precompile return data: field elements per blob, field modulus (big-endian uint256)
 	new(big.Int).SetUint64(FieldElementsPerBlob).FillBytes(precompileReturnValue[:32])
 	BLSModulus.FillBytes(precompileReturnValue[32:])
