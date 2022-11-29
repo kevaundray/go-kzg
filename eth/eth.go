@@ -15,6 +15,7 @@ import (
 	"fmt"
 	"math/big"
 
+	context "github.com/crate-crypto/go-proto-danksharding-crypto"
 	"github.com/protolambda/go-kzg/bls"
 )
 
@@ -75,6 +76,8 @@ var (
 	invalidKZGProofError = errors.New("invalid kzg proof")
 )
 
+var ctx = context.NewContextInsecure(10, 100)
+
 func init() {
 	// Hack bcause it does not seem to be getting initialised before this init is called
 	BLSModulus = new(big.Int)
@@ -126,24 +129,29 @@ func PointEvaluationPrecompile(input []byte) ([]byte, error) {
 // https://github.com/ethereum/consensus-specs/blob/dev/specs/eip4844/polynomial-commitments.md#verify_kzg_proof
 func VerifyKZGProof(polynomialKZG KZGCommitment, z, y [32]byte, kzgProof KZGProof) (bool, error) {
 	// successfully converting z and y to bls.Fr confirms they are < MODULUS per the spec
-	var zFr, yFr bls.Fr
-	ok := bls.FrFrom32(&zFr, z)
-	if !ok {
-		return false, errors.New("invalid evaluation point")
-	}
-	ok = bls.FrFrom32(&yFr, y)
-	if !ok {
-		return false, errors.New("invalid expected output")
-	}
-	polynomialKZGG1, err := bls.FromCompressedG1(polynomialKZG[:])
-	if err != nil {
-		return false, fmt.Errorf("failed to decode polynomialKZG: %v", err)
-	}
-	kzgProofG1, err := bls.FromCompressedG1(kzgProof[:])
-	if err != nil {
-		return false, fmt.Errorf("failed to decode kzgProof: %v", err)
-	}
-	return VerifyKZGProofFromPoints(polynomialKZGG1, &zFr, &yFr, kzgProofG1), nil
+	// var zFr, yFr bls.Fr
+	// ok := bls.FrFrom32(&zFr, z)
+	// if !ok {
+	// 	return false, errors.New("invalid evaluation point")
+	// }
+	// ok = bls.FrFrom32(&yFr, y)
+	// if !ok {
+	// 	return false, errors.New("invalid expected output")
+	// }
+	// polynomialKZGG1, err := bls.FromCompressedG1(polynomialKZG[:])
+	// if err != nil {
+	// 	return false, fmt.Errorf("failed to decode polynomialKZG: %v", err)
+	// }
+	// kzgProofG1, err := bls.FromCompressedG1(kzgProof[:])
+	// if err != nil {
+	// 	return false, fmt.Errorf("failed to decode kzgProof: %v", err)
+	// }
+
+	// HACK, we do this to conform to the current API
+	err := ctx.VerifyKZGProof(polynomialKZG[:], z, y, kzgProof[:])
+	ok := err == nil
+
+	return ok, err
 }
 
 // KZGToVersionedHash implements kzg_to_versioned_hash from EIP-4844
