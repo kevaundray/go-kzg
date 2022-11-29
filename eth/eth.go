@@ -76,7 +76,7 @@ var (
 	invalidKZGProofError = errors.New("invalid kzg proof")
 )
 
-var ctx = context.NewContextInsecure(10, 100)
+var ctx = context.NewContextInsecure(4096, 1337)
 
 func init() {
 	// Hack bcause it does not seem to be getting initialised before this init is called
