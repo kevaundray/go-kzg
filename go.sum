@@ -2,8 +2,8 @@ github.com/consensys/bavard v0.1.13 h1:oLhMLOFGTLdlda/kma4VOJazblc7IM5y5QPd2A/Yj
 github.com/consensys/bavard v0.1.13/go.mod h1:9ItSMtA/dXMAiL7BG6bqW2m3NdSEObYWoH223nGHukI=
 github.com/consensys/gnark-crypto v0.8.0 h1:HHmhTEzHq6k/fJroPGzq8Biafn2X2IFKlKDhaL5gMHU=
 github.com/consensys/gnark-crypto v0.8.0/go.mod h1:ZTnSzNlt98CpwYIJyk6q/KVcshYWr3fOXXFrrY8a0QQ=
-github.com/crate-crypto/go-proto-danksharding-crypto v0.0.0-20221207221734-00f7e4a5bfa9 h1:GWVLLdHpzrHKjva8IKhQuL/QUxWX+7pwEsl4RSgJWVI=
-github.com/crate-crypto/go-proto-danksharding-crypto v0.0.0-20221207221734-00f7e4a5bfa9/go.mod h1:sb1Gv+xiW7NDtc05j60PJdm0HQFi47mAKEdlOhJ6K7k=
+github.com/crate-crypto/go-proto-danksharding-crypto v0.0.0-20221207234621-1e947f621e8f h1:kD7VOov1Bq4hApPNVhCCJkg+7Kd4NPSx7HCIfql6YQY=
+github.com/crate-crypto/go-proto-danksharding-crypto v0.0.0-20221207234621-1e947f621e8f/go.mod h1:sb1Gv+xiW7NDtc05j60PJdm0HQFi47mAKEdlOhJ6K7k=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/google/subcommands v1.2.0/go.mod h1:ZjhPrFU+Olkh9WazFPsl27BQ4UPiG37m3yTrtFlrHVk=
 github.com/herumi/bls-eth-go-binary v1.28.1 h1:fcIZ48y5EE9973k05XjE8+P3YiQgjZz4JI/YabAm8KA=
