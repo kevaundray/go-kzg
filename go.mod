@@ -3,7 +3,7 @@ module github.com/protolambda/go-kzg
 go 1.18
 
 require (
-	github.com/crate-crypto/go-proto-danksharding-crypto v0.0.0-20221128204026-10745debcfbe
+	github.com/crate-crypto/go-proto-danksharding-crypto v0.0.0-20221207221734-00f7e4a5bfa9
 	github.com/herumi/bls-eth-go-binary v1.28.1
 	github.com/holiman/uint256 v1.2.1
 	github.com/kilic/bls12-381 v0.1.1-0.20220929213557-ca162e8a70f4
